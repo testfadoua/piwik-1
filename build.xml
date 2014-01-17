@@ -4,19 +4,22 @@
 
     <target name="build"
         description="Tâche principale d'intégration continue"
-        depends="init,phpcs,clean,qa"
+        depends="init,pdepend,clean,qa"
     />
     <target name="init">
 		<mkdir dir="${output}"/>
 		<mkdir dir="${output}/phpcs/"/>
 		<mkdir dir="${output}/pdepend/"/>
 	</target>
-	<target name="phpcs">
-		<exec executable="phpcs"> 
-			<arg line="--report=checkstyle
-              			--report-file=${output}/phpcs/checkstyle.xml
-              			--standard=Zend
-              			${basedir}" />
+<target name="pdepend">
+		<exec executable="pdepend">
+			<arg line="
+				--jdepend-xml=${output}/pdepend/jdepend.xml 
+				--jdepend-chart=${output}/pdepend/dependencies.svg 
+				--overview-pyramid=${output}/pdepend/overview-pyramid.svg 
+				--ignore=Tests/ 
+				.
+			" />
 		</exec>
 	</target>
 
