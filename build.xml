@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Test" default="build" basedir=".">
-	<property name="output" location="${basedir}/buildOutput/"/>
+	<property name="output" location="${basedir}/tmp/"/>
 
 	<target name="init">
 		<mkdir dir="${output}"/>
