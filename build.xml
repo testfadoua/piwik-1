@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="build" basedir=".">
-    
+    <property name="output" location="${basedir}/buildOutput/"/>
 
     <target name="build"
         description="Tâche principale d'intégration continue"
@@ -8,18 +8,13 @@
     />
 
     <target name="clean" description="Vide les répertoires d'artefacts">
-<delete dir="${project.basedir}/build/api" />
-    <delete dir="${project.basedir}/build/code-browser" />
-    <delete dir="${project.basedir}/build/coverage" />
-    <delete dir="${project.basedir}/build/logs" />
-    <delete dir="${project.basedir}/build/pdepend" />
 
-    <mkdir dir="${project.basedir}/build/api" />
-    <mkdir dir="${project.basedir}/build/code-browser" />
-    <mkdir dir="${project.basedir}/build/coverage" />
-    <mkdir dir="${project.basedir}/build/logs" />
-    <mkdir dir="${project.basedir}/build/pdepend" />
-    </target>
+
+	
+		<mkdir dir="${output}"/>
+		<mkdir dir="${output}/phpcs/"/>
+		<mkdir dir="${output}/pdepend/"/>
+	</target>
 
     <target name="qa" description="Lance les outils d'analyse">
 
