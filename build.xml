@@ -6,22 +6,12 @@
         description="Tâche principale d'intégration continue"
         depends="init,pdepend,clean,qa"
     />
-    <target name="init">
+    <target name="init" >
 		<mkdir dir="${output}"/>
 		<mkdir dir="${output}/phpcs/"/>
 		<mkdir dir="${output}/pdepend/"/>
 	</target>
- <target name="pdepend">
-		<exec executable="pdepend">
-			<arg line="
-				--jdepend-xml=${output}/pdepend/jdepend.xml 
-				--jdepend-chart=${output}/pdepend/dependencies.svg 
-				--overview-pyramid=${output}/pdepend/overview-pyramid.svg 
-				--ignore=Tests/ 
-				.
-			" />
-		</exec>
-	</target>
+ 
 
     <target name="clean" description="Vide les répertoires d'artefacts">
 
