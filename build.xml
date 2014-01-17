@@ -4,16 +4,19 @@
 
     <target name="build"
         description="Tâche principale d'intégration continue"
-        depends="clean,qa"
+        depends="init,clean,qa"
     />
+    <target name="init">
+		<mkdir dir="${output}"/>
+		<mkdir dir="${output}/phpcs/"/>
+		<mkdir dir="${output}/pdepend/"/>
+	</target>
 
     <target name="clean" description="Vide les répertoires d'artefacts">
 
 
 	
-		<mkdir dir="${output}"/>
-		<mkdir dir="${output}/phpcs/"/>
-		<mkdir dir="${output}/pdepend/"/>
+	
 	</target>
 
     <target name="qa" description="Lance les outils d'analyse">
