@@ -4,18 +4,24 @@
 
     <target name="build"
         description="Tâche principale d'intégration continue"
-        depends="init,clean,qa"
+        depends="init,phpcs,clean,qa"
     />
     <target name="init">
 		<mkdir dir="${output}"/>
 		<mkdir dir="${output}/phpcs/"/>
 		<mkdir dir="${output}/pdepend/"/>
 	</target>
+	<target name="phpcs">
+		<exec executable="phpcs"> 
+			<arg line="--report=checkstyle
+              			--report-file=${output}/phpcs/checkstyle.xml
+              			--standard=Zend
+              			${basedir}" />
+		</exec>
+	</target>
 
     <target name="clean" description="Vide les répertoires d'artefacts">
 
-
-	
 	
 	</target>
 
