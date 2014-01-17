@@ -12,13 +12,16 @@
 		<mkdir dir="${output}/pdepend/"/>
 	</target>
  <target name="pdepend">
-       <pdepend file="${basedir}">
-           <fileset refid="files" />
-           <logger type="jdepend-xml" outfile="${output}/pdepend/jdepend.xml" />
-           <logger type="jdepend-chart" outfile="${output}/pdepend/dependencies.svg" />
-           <logger type="overview-pyramid" outfile="${output}/pdepend/overview-pyramid.svg" />
-       </pdepend>
-   </target>
+		<exec executable="pdepend">
+			<arg line="
+				--jdepend-xml=${output}/pdepend/jdepend.xml 
+				--jdepend-chart=${output}/pdepend/dependencies.svg 
+				--overview-pyramid=${output}/pdepend/overview-pyramid.svg 
+				--ignore=Tests/ 
+				.
+			" />
+		</exec>
+	</target>
 
     <target name="clean" description="Vide les répertoires d'artefacts">
 
