@@ -11,9 +11,7 @@
 		<mkdir dir="${output}/phpcs/"/>
 		<mkdir dir="${output}/pdepend/"/>
 	</target>
-	<target name="test">
-	
-	</target>
+
  <target name="phpcs">
 		<exec executable="phpcs"> 
 			<arg line="--report=checkstyle
@@ -29,13 +27,7 @@
 			" />
 		</exec>
 	</target>
-	<target name="test">
-		<exec executable="phpunit" failonerror="true">
-			<arg line="--coverage-clover ${output}/CodeCoverage/clover.xml 
-				--coverage-html ${output}/CodeCoverage/ 
-				."/>
-		</exec>
-	</target>
+
 <target name="pdepend">
 		<exec executable="pdepend">
 		
@@ -46,6 +38,13 @@
 				--ignore=Tests/ 
 				.
 			" />
+		</exec>
+	</target>
+		<target name="test">
+		<exec executable="phpunit" failonerror="true">
+			<arg line="--coverage-clover ${output}/CodeCoverage/clover.xml 
+				--coverage-html ${output}/CodeCoverage/ 
+				."/>
 		</exec>
 	</target>
     <target name="clean" description="Vide les répertoires d'artefacts">
