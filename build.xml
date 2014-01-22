@@ -4,7 +4,7 @@
 
     <target name="build"
         description="Tâche principale d'intégration continue"
-        depends="init,pdepend"
+        depends="init,phpcs,phpmd,pdepend"
     />
     <target name="init" >
 		<mkdir dir="${output}"/>
